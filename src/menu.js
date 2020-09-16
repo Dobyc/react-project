@@ -20,6 +20,9 @@ class menu extends Component {
                 <Menu.Item key="/login" icon={<DesktopOutlined />}>
                     <Link to='/login'>login</Link>
                 </Menu.Item>
+                <Menu.Item key="/table" icon={<DesktopOutlined />}>
+                    <Link to='/table'>table</Link>
+                </Menu.Item>
             </Menu>
         )
     }
