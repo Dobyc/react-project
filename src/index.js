@@ -9,12 +9,10 @@ import './index.css';
 import 'antd/dist/antd.css';
 
 ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <ConfigProvider locale={zhCN}>
-        <App />
-      </ConfigProvider>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <ConfigProvider locale={zhCN}>
+      <App />
+    </ConfigProvider>
+  </Provider>,
   document.getElementById('root')
 );

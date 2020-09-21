@@ -1,19 +1,28 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { Button, Spin } from 'antd'
 import './index.css'
-import login from './reducer'
+import * as actions from './action'
 
 export class index extends Component {
   constructor(props){
     super(props)
   }
 
+  handleClick = () => {
+    this.props.actions.requestLogin('登录名', '密码')
+  }
+
   render() {
     const {login,home} = this.props;
     return (
       <div>
-        <div>page:{login.page}</div>
-        <div>home text:{home.text}</div>
+        <Spin spinning={login.isFetching} />
+        <div>username:{login.username}</div>
+        <div>company:{login.company}</div>
+        <div>home text:{login.text}</div>
+        <Button onClick={this.handleClick}>登录</Button>
       </div>
     )
   }
@@ -24,8 +33,10 @@ const mapStateToProps = (state) => ({
   home: state.home,
 })
 
-const mapDispatchToProps = {
-
+const mapDispatchToProps = dispatch => {
+  return {
+    actions: bindActionCreators(actions, dispatch)
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(index)
